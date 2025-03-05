@@ -2,7 +2,7 @@
 
 ## Arcade Tutorial @showdialog
 
-During this tutorial you will learn how to create a simpe MakeCode Arcade game with some basic game mechanics!
+During this tutorial you will learn how to create a simple MakeCode Arcade game with some basic game mechanics!
 
 
 ## Step 1 @fullscreen
@@ -32,7 +32,7 @@ let mySprite = sprites.create(img`
 
 ## Step 2
 
-Click on the empty image oval, then click Gallery and select your hero sprite.
+Click on the empty image oval, then click **Gallery** and select your hero sprite, click **Done**.
 Click on **mySprite** and select **Rename variable**. Rename you sprite to an appropriate name, since mine is a duck, I'll name it duck.
 
 ```blocks
@@ -179,6 +179,7 @@ Our enemy also needs to be able to move so let's give it a starting position by 
 Change **mySprite** to your enemy sprite's name.
 Get a `||sprites:set mySprite velocity||` block from `||sprites:Sprites||` and add it under the set position block.
 Change **mySprite** to the name of your enemy sprite.
+**Velocity** is speed and direction. If you change the number for vx and vy your enemy will move in different directions and speeds.
 
 ```blocks
 let duck = sprites.create(img`
@@ -238,6 +239,55 @@ Uh oh! Our enemy disapeared off the screen. What do we need to add to fix that?
 
 
 ```blocks
+let duck = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . b 5 5 b . . . 
+    . . . . . . b b b b b b . . . . 
+    . . . . . b b 5 5 5 5 5 b . . . 
+    . b b b b b 5 5 5 5 5 5 5 b . . 
+    . b d 5 b 5 5 5 5 5 5 5 5 b . . 
+    . . b 5 5 b 5 d 1 f 5 d 4 f . . 
+    . . b d 5 5 b 1 f f 5 4 4 c . . 
+    b b d b 5 5 5 d f b 4 4 4 4 b . 
+    b d d c d 5 5 b 5 4 4 4 4 4 4 b 
+    c d d d c c b 5 5 5 5 5 5 5 b . 
+    c b d d d d d 5 5 5 5 5 5 5 b . 
+    . c d d d d d d 5 5 5 5 5 d b . 
+    . . c b d d d d d 5 5 5 b b . . 
+    . . . c c c c c c c c b b . . . 
+    `, SpriteKind.Player)
+controller.moveSprite(duck)
+duck.setStayInScreen(true)
+let ghost = sprites.create(img`
+    ........................
+    ........................
+    ........................
+    ........................
+    ..........ffff..........
+    ........ff1111ff........
+    .......fb111111bf.......
+    .......f11111111f.......
+    ......fd11111111df......
+    ......fd11111111df......
+    ......fddd1111dddf......
+    ......fbdbfddfbdbf......
+    ......fcdcf11fcdcf......
+    .......fb111111bf.......
+    ......fffcdb1bdffff.....
+    ....fc111cbfbfc111cf....
+    ....f1b1b1ffff1b1b1f....
+    ....fbfbffffffbfbfbf....
+    .........ffffff.........
+    ...........fff..........
+    ........................
+    ........................
+    ........................
+    ........................
+    `, SpriteKind.Enemy)
+ghost.setPosition(0, 0)
+ghost.setVelocity(50, 50)
+// @highlight
 ghost.setStayInScreen(true)
 ```
 
