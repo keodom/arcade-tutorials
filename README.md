@@ -3,14 +3,11 @@
 
 > Open this page at [https://keodom.github.io/arcade-tutorials/](https://keodom.github.io/arcade-tutorials/)
 
-## Use as Extension
+## tutorials
 
-This repository can be added as an **extension** in MakeCode.
+* [Tutorials](/tutorials/basic-mechanics-tutorial)
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/keodom/arcade-tutorials** and import
+
 
 ## Edit this project ![Build status badge](https://github.com/keodom/arcade-tutorials/workflows/MakeCode/badge.svg)
 
