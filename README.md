@@ -3,9 +3,9 @@
 
 > Open this page at [https://keodom.github.io/arcade-tutorials/](https://keodom.github.io/arcade-tutorials/)
 
-## tutorials
+## Tutorials
 
-* [Tutorials](/tutorials/basic-mechanics-tutorial)
+* [Tutorials](/acrade-tutorials/basic-mechanics-tutorial)
 
 
 
