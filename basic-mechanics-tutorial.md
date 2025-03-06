@@ -418,7 +418,8 @@ let ghost = sprites.create(img`
 ## Step 11
 
 Just avoiding an enemy isn't very much fun, so let's add something to collect!
-In MakeCode Arcade we use the sprike kind *food* as a collectible item, it does not *have* to be a food item, but can be if you want!
+In MakeCode Arcade we use the sprite kind *food* as a collectible item,
+it does not *have* to be a food item, but can be if you want!
 Let's make a food sprite spawn into our game every few moments.
 Go to the `||game:Game||` category and get a `||game:on game update every 500 ms||` event block.
 This is another seperate event, so it will also not connect to your other code blocks.
@@ -457,13 +458,14 @@ game.onUpdateInterval(500, function () {
 Grab a `||sprites:set mySprite postion||` block and place it below your food sprite block.
 Change **mySprite** to the name of your food sprite.
 We want our food sprite to appear in different locations each time it spawns so we will need to use **pick random**.
-Open the `||math:Math||`` category and grab a `||math:pick random number from 0 to 10||` block and place it in the x 0 on the **set position** block.
+Open the `||math:Math||` category and grab a `||math:pick random number from 0 to 10||` block and place it in the x 0 on the **set position** block.
 Duplicate the **pick random** and place it in the y 0.
 On the **pick random** for the x-coordinate use 10 to 150.
 On the **pick random** for the y-coordinate use 10 to 110.
-Using these cooridiate ranges will keep our food sprite visiable on the screen when they spawn.
+Using these coordinate ranges will keep our food sprite visiable on the screen when they spawn.
 
 ```blocks
+let taco: Sprite = null
 game.onUpdateInterval(500, function () {
     taco = sprites.create(img`
         . . . . . . . e e e e . . . . . 
@@ -482,7 +484,7 @@ game.onUpdateInterval(500, function () {
         4 5 4 e 5 5 5 5 e e . . . . . . 
         . 4 5 4 5 5 4 e . . . . . . . . 
         . . 4 4 e e e . . . . . . . . . 
-        `, SpriteKind.Food)
+        `, SpriteKind.Player)
     taco.setPosition(randint(10, 150), randint(10, 110))
 })
 ```
