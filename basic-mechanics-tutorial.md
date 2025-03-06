@@ -495,11 +495,11 @@ game.onUpdateInterval(500, function () {
 Now we need to set up the interaction between our player sprite and our food sprite so the player can collect it.
 For this we need to add another `||sprites:on sprite of kind Player overlaps otherSprite of kind Player||` event block.
 Remember, this is a seperate event and therefore does not connect to any of our other code.
-This time change the otherSprite's kind to **Food**.
+This time, change the otherSprite's kind to **Food**.
 When our player sprite touches the food sprite, the food sprite needs to get collected.
-We can do this by destroying the food sprite that got touched!
+We can do this by *destroying* the food sprite that got touched!
 Add a `||sprites:destroy mySprite||` block to the overlap event block.
-Drag the **otherSprite** block from the overlap block into the **mySprite** section of the destroy block, this will make it so only the sprite that got touched gets destroyed.
+Drag the **otherSprite** block from the overlap block into the **mySprite** section of the destroy block, this will make it so the specific sprite that got touched gets destroyed.
 We also want to get points when we collect our food sprites.
 Add a `||info:change score by 1||` from the `||info:Info||` category under the `||sprites:destroy mySprite||` block in the overlap event block.
 Test your game, you should be able to collect the food sprites as they appear!
@@ -523,5 +523,6 @@ If you have time, add some additional features:
 - add a countdown timer from the info category
 
 ```blocks
+// @highlight
 info.startCountdown(10)
 ```
