@@ -5,7 +5,7 @@
 
 ## Tutorials
 
-* [Tutorials](/acrade-tutorials/basic-mechanics-tutorial)
+* [Basic Game Mechanics Tutorial](/acrade-tutorials/basic-mechanics-tutorial)
 
 
 
