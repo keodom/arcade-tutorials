@@ -350,6 +350,7 @@ let ghost = sprites.create(img`
 ghost.setPosition(0, 0)
 ghost.setVelocity(50, 50)
 ghost.setStayInScreen(true)
+// @highlight
 ghost.setBounceOnWall(true)
 ```
 
@@ -379,13 +380,13 @@ Find your **set enemySprite position ** block, duplicate it (right-click or two-
 Put that block inside the overlap event block.
 Test your game again, is it working better now?
 
-```blocks
+```block
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     // @highlight
     ghost.setPosition(0, 0)
 })
-
+// @hide
 let ghost = sprites.create(img`
     ........................
     ........................
@@ -522,7 +523,6 @@ If you have time, add some additional features:
 - Make it harder by having more enemies spawn every so often using another on game update ms
 - add a countdown timer from the info category
 
-```blocks
-// @highlight
+```block
 info.startCountdown(10)
 ```
