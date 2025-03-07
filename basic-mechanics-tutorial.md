@@ -416,12 +416,16 @@ let ghost = sprites.create(img`
 ```
 
 
-## Step 11
+## Food Sprites @showdialog
 
 Just avoiding an enemy isn't very much fun, so let's add something to collect!
 In MakeCode Arcade we use the sprite kind *food* as a collectible item,
 it does not *have* to be a food item, but can be if you want!
 Let's make a food sprite spawn into our game every few moments.
+
+
+## Step 11
+
 Go to the `||game:Game||` category and get a `||game:on game update every 500 ms||` event block.
 This is another seperate event, so it will also not connect to your other code blocks.
 You can change the **500** to the amount of milliseconds you want, consider how often you want the sprite to spawn. 500 ms is half a second.
