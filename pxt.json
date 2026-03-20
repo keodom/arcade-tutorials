@@ -10,13 +10,14 @@
         "main.ts",
         "README.md",
         "assets.json",
-        "basic-mechanics-tutorial.md"
+        "basic-mechanics-tutorial.md",
+        "block-images.md"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.12.61",
+        "target": "4.0.12",
         "targetId": "arcade"
     },
     "supportedTargets": [

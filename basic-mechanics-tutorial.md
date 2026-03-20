@@ -1,15 +1,23 @@
 # Basic Game Mechanics
 
+
 ## Arcade Tutorial @showdialog
+
+**Welcome!**<br>Let's make a simple game.<br>
 
 During this tutorial you will learn how to create a simple MakeCode Arcade game with some basic game mechanics!
 
 
-## Step 1 @fullscreen
 
-**Welcome!** Let's make a simple game. Open the `||sprites:Sprites||` category and grab a `||sprites:set mySprite||` block and add it to your `||loops:on start||`.
+
+## Step 2 @fullscreen
+
+
+Open the `||sprites:Sprites||` category and grab a `||sprites:set mySprite||` block and add it to your `||loops:on start||`.
+
 
 ```blocks
+// @highlight
 let mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -30,11 +38,14 @@ let mySprite = sprites.create(img`
     `, SpriteKind.Player)
 ```
 
-## Step 2
+
+## Step 3
+
 
 Click on the empty image oval, then click **Gallery** and select your hero sprite, click **Done**.
 Click on **mySprite** and select **Rename variable**.
 Rename your sprite to an appropriate name, since mine is a duck, I'll name it duck.
+
 
 ```blocks
 let duck = sprites.create(img`
@@ -57,7 +68,9 @@ let duck = sprites.create(img`
     `, SpriteKind.Player)
 ```
 
-## Step 3
+
+## Step 4
+
 
 Open the `||controller:Controller||` category in the Toolbox and grab a `||controller:move mySprite with buttons||` block.
 Change **mySprite** to your sprite's name (mine is duck).
@@ -65,6 +78,9 @@ Connect that block below your `||sprites:set mySprite||` block in the `||loops:o
 
 
 
+
+
+
 ```blocks
 let duck = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -84,16 +100,20 @@ let duck = sprites.create(img`
     . . c b d d d d d 5 5 5 b b . . 
     . . . c c c c c c c c b b . . . 
     `, SpriteKind.Player)
+// @highlight
 controller.moveSprite(duck)
 ```
 
-## Step 4
+
+## Step 5
+
 
 Let's make it so our character can't move off the screen next.
 Open the `||sprites:Sprites||` categroy in the Toolbox and grab a `||sprites: set mySprite stay in screen on||` block and place it below the `||controller:move mySprite with buttons||`.
 Change **mySprite** to the name of your sprite.
 Now when you move to the edge of the screen your sprite stays visible!
 
+
 ```blocks
 let duck = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -114,10 +134,13 @@ let duck = sprites.create(img`
     . . . c c c c c c c c b b . . . 
     `, SpriteKind.Player)
 controller.moveSprite(duck)
+// @highlight
 duck.setStayInScreen(true)
 ```
 
-## Step 5
+
+## Step 6
+
 
 Now let's make it so there is an enemy to avoid.
 Make a new sprite using the `||sprites:set mySprite to sprite of kind Player||` block.
@@ -125,6 +148,7 @@ Pick an image from the Gallery and change the sprite's kind from **Player** to *
 Rename your sprite to an appropriate name by clicking on **mySprite**, then **Rename variable**.
 I named mine ghost.
 
+
 ```blocks
 let duck = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -146,6 +170,7 @@ let duck = sprites.create(img`
     `, SpriteKind.Player)
 controller.moveSprite(duck)
 duck.setStayInScreen(true)
+// @highlight
 let ghost = sprites.create(img`
     ........................
     ........................
@@ -174,7 +199,9 @@ let ghost = sprites.create(img`
     `, SpriteKind.Enemy)
 ```
 
-## Step 6
+
+## Step 7
+
 
 Our enemy also needs to be able to move so let's give it a starting position by adding `||sprites:set mySprite position to||` block.
 Change **mySprite** to your enemy sprite's name.
@@ -182,6 +209,7 @@ Get a `||sprites:set mySprite velocity||` block from `||sprites:Sprites||` and a
 Change **mySprite** to the name of your enemy sprite.
 **Velocity** is speed and direction. If you change the number for vx and vy your enemy will move in different directions and speeds.
 
+
 ```blocks
 let duck = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -229,14 +257,21 @@ let ghost = sprites.create(img`
     ........................
     ........................
     `, SpriteKind.Enemy)
+// @highlight
 ghost.setPosition(0, 0)
+// @highlight
 ghost.setVelocity(50, 50)
 ```
 
 
-## Step 7
+
+
+## Step 8
+
 
 Uh oh! Our enemy disapeared off the screen. What do we need to add to fix that?
+
+
 
 
 ```blocks
@@ -292,12 +327,16 @@ ghost.setVelocity(50, 50)
 ghost.setStayInScreen(true)
 ```
 
-## Step 8
+
+## Step 9
+
 
 Let's also make it so our enemy keeps moving around the screen after it reaches the edge.
 Open `||sprites:Sprites||` and grab a `||sprites:set mySprite bounce on wall||`.
 Change **mySprite** to the name of your enemy sprite.
 Now, your enemy should move on its own and bounce around the screen!
+
+
 
 
 ```blocks
@@ -355,7 +394,10 @@ ghost.setBounceOnWall(true)
 ```
 
 
-## Step 9
+
+
+## Step 10
+
 
 But nothing happens when our enemy touchs the player sprite, so let's fix that next.
 Grab a `||sprites:on sprite of kind player overlaps other sprite of kind player||` block from the `||sprites:Sprites||` category.
@@ -365,13 +407,16 @@ Now, let's make it so the player loses a life when the enemy catches them.
 Open the `||info:Info||` category and grab a `||info:change life by -1||` and place it inside the overlap event block.
 
 
+
+
 ```blocks
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
 })
 ```
 
-## Step 10
+
+## Step 11
 Test your game and let the enemy hit the player sprite.
 What happened? The game instantly ended!
 Because the two sprites are still touching the player continues to lose lives, so we need to move the enemy sprite away from the player sprite after they overlap.
@@ -379,6 +424,7 @@ We need to reset the enemy's position using the **set position** block.
 Find your **set enemySprite position ** block, duplicate it (right-click or two-finger tap).
 Put that block inside the overlap event block.
 Test your game again, is it working better now?
+
 
 ```block
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -416,7 +462,10 @@ let ghost = sprites.create(img`
 ```
 
 
+
+
 ## Food Sprites @showdialog
+
 
 Just avoiding an enemy isn't very much fun, so let's add something to collect!
 In MakeCode Arcade we use the sprite kind *food* as a collectible item,
@@ -424,7 +473,10 @@ it does not *have* to be a food item, but can be if you want!
 Let's make a food sprite spawn into our game every few moments.
 
 
-## Step 11
+
+
+## Step 13
+
 
 Go to the `||game:Game||` category and get a `||game:on game update every 500 ms||` event block.
 This is another seperate event, so it will also not connect to your other code blocks.
@@ -432,6 +484,7 @@ You can change the **500** to the amount of milliseconds you want, consider how 
 Make another new sprite using the `||sprites:set mySprite of kind Player||` block.
 Pick your sprite's image from the gallery and give it an appropriate name by renaming the variable.
 Then change your sprite's kind from **Player** to **Food**.
+
 
 ```blocks
 let taco: Sprite = null
@@ -458,7 +511,10 @@ game.onUpdateInterval(500, function () {
 ```
 
 
-## Step 12
+
+
+## Step 14
+
 
 Grab a `||sprites:set mySprite postion||` block and place it below your food sprite block.
 Change **mySprite** to the name of your food sprite.
@@ -468,6 +524,7 @@ Duplicate the **pick random** and place it in the y 0.
 On the **pick random** for the x-coordinate use 10 to 150.
 On the **pick random** for the y-coordinate use 10 to 110.
 Using these coordinate ranges will keep our food sprite visiable on the screen when they spawn.
+
 
 ```blocks
 let taco: Sprite = null
@@ -494,7 +551,10 @@ game.onUpdateInterval(500, function () {
 })
 ```
 
-## Step 13
+
+## Step 15
+
+
 
 
 Now we need to set up the interaction between our player sprite and our food sprite so the player can collect it.
@@ -509,6 +569,7 @@ We also want to get points when we collect our food sprites.
 Add a `||info:change score by 1||` from the `||info:Info||` category under the `||sprites:destroy mySprite||` block in the overlap event block.
 Test your game, you should be able to collect the food sprites as they appear!
 
+
 ```blocks
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
@@ -517,15 +578,20 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
 ```
 
 
-## Step 14
 
-Did everything work? Great! You're ready to submit your project in Canvas!
+
+## Step 16
+
+
+Did everything work? Great!
+
 
 **Bonus**
 If you have time, add some additional features:
 - Make the enemy steal the food sprites from the player using another sprites overlaps event
-- Make it harder by having more enemies spawn every so often using another on game update ms
+- Make it harder by having more enemies spawn every so often using another **on game update ms**
 - add a countdown timer from the info category
+
 
 ```block
 info.startCountdown(10)
